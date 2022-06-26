@@ -12,7 +12,7 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 
 @Controller({
-  path: 'users',
+  path: 'api/users',
 })
 export class UsersController {
   constructor(private usersService: UsersService) {}

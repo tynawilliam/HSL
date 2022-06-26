@@ -3,7 +3,7 @@ import { AnswersService } from './answers.service';
 import { AddAnswerDto } from './dtos/add-answer.dto';
 
 @Controller({
-  path: 'answers',
+  path: 'api/answers',
 })
 export class AnswersController {
   constructor(private answersService: AnswersService) {}
