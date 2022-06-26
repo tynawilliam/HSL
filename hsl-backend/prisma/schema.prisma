@@ -9,7 +9,7 @@ datasource db {
 
 model Answers {
   id         Int       @id @default(autoincrement())
-  userId     Int
+  userId     String
   questionId Int
   body       String?
   users      Users     @relation(fields: [userId], references: [id])
@@ -23,13 +23,11 @@ model Questions {
   answers   Answers[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  deletedAt DateTime  @db.Timestamp()
 }
 
 model Users {
-  id        Int       @id
+  id        String    @id
   answers   Answers[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  deletedAt DateTime  @db.Timestamp()
 }
