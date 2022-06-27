@@ -1,0 +1,23 @@
+#instructions{
+    padding: 2vw;
+}
+.form{
+    margin: auto;
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#form-field{
+    margin: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#submit-button{
+    background-color: aqua;
+}

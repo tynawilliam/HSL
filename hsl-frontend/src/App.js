@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import Questions from './components/Question'
+import Questions from './components/Questions'
 import './App.css';
-import NewCarousel from "./components/NewCarousel";
+import './styles/modal.css'
 
 function App() {
   const [userId, setUserId] = useState("")
   const [isValid, setIsValid] = useState(false)
   const [questions, setQuestions] = useState([])
+  const [submitted, setSubmitted] = useState(false)
 
   const setId = (e) => {
     setUserId(e.target.value)
@@ -16,7 +17,6 @@ function App() {
     e.preventDefault()
 
     async function validateUser() {
-      console.log(userId);
       const res = await fetch(`/api/users/${userId}`, {
         method: "GET",
         headers: {
@@ -28,7 +28,7 @@ function App() {
       if(!res.ok) {
         setIsValid(false)
         console.log("Error")
-      } else {
+      }else {
         setIsValid(true);
       }
     }
@@ -48,20 +48,31 @@ function App() {
       }
     })()
   }, [])
-  return (
-    <div className="App">
-    <h1>Hi Tyna</h1>
-    <form onSubmit={onSubmit}>
-      <input id="getId" onChange={setId}/>
-      <input type="submit" value="login"/>
-    </form>
-    <Modal 
-      isOpen={isValid}>
-        <NewCarousel questions={questions}></NewCarousel>
-
-    </Modal>
-    </div>
-  );
+  if(!submitted){
+    return (
+        <div className="App">
+        <h1>Welcome to the Harvard Skills Lab Survey</h1>
+        <h4>To continue, please enter your user id in the field below</h4>
+        <form onSubmit={onSubmit}>
+          <input id="getId" onChange={setId}/>
+          <input type="submit" value="login"/>
+        </form>
+        <Modal
+        className="modal" 
+          isOpen={isValid}>
+            <Questions setSubmitted={setSubmitted} setIsValid={setIsValid} questions={questions} userId={userId}></Questions>
+  
+        </Modal>
+        </div>
+    );
+  } else{
+    return (
+      <div id="thank-you">
+        <h1>Thank you for your time</h1>
+        <p>Your responses have been recorded. You can now safely close your browser</p>
+      </div>
+    )
+  }
 }
 
 export default App;
