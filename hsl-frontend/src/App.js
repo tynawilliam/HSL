@@ -1,9 +1,13 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react";
+import Modal from "react-modal";
+import Questions from './components/Question'
 import './App.css';
+import NewCarousel from "./components/NewCarousel";
 
 function App() {
   const [userId, setUserId] = useState("")
   const [isValid, setIsValid] = useState(false)
+  const [questions, setQuestions] = useState([])
 
   const setId = (e) => {
     setUserId(e.target.value)
@@ -29,7 +33,21 @@ function App() {
       }
     }
     validateUser()
+    
   }
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("/api/questions")
+      try{
+        if(res.ok){
+          const data = await res.json()
+          setQuestions(data)
+        }
+      }catch(err) {
+        console.error(err)
+      }
+    })()
+  }, [])
   return (
     <div className="App">
     <h1>Hi Tyna</h1>
@@ -37,6 +55,11 @@ function App() {
       <input id="getId" onChange={setId}/>
       <input type="submit" value="login"/>
     </form>
+    <Modal 
+      isOpen={isValid}>
+        <NewCarousel questions={questions}></NewCarousel>
+
+    </Modal>
     </div>
   );
 }
