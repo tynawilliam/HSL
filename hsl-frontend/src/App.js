@@ -24,7 +24,6 @@ function App() {
 
     async function validateUser() {
       if(userId){
-        console.log(userId);
         const res = await fetch(`/api/users/${userId}`, {
           method: "GET",
           headers: {
