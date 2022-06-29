@@ -11,7 +11,8 @@ To run the application, follow the below steps:
 
 To run just the API - follow the beklow steps
 - cd into "hsl-backend"
-- run "npm run start:dev" to start the app in development mode
+- run "npm run start:dev" to start the app in watch mode
+- run "npm run start" to start the app in dvelopment mode
 - test API using below endpoints
 
 
