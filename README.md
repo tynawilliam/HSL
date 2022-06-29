@@ -53,3 +53,7 @@ To run just the API - follow the beklow steps
 
 
 ## App Flow
+![alt Login](https://github.com/tynawilliam/HSL/blob/main/documentation/images/login.png?raw=true)
+![alt Begin](https://github.com/tynawilliam/HSL/blob/main/documentation/images/begin.png?raw=true)
+![alt Thank You](https://github.com/tynawilliam/HSL/blob/main/documentation/images/questions.png?raw=true)
+![alt Thank You](https://github.com/tynawilliam/HSL/blob/main/documentation/images/thankYou.png?raw=true)
