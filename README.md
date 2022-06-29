@@ -8,6 +8,7 @@ To run the application, follow the below steps:
 
 - Clone this repository
 - run "npm install"
+- create a .env in the "hsl-backend" folder and provide a postgres url "DATABSE_URL" with the database schema below.
 - run npm start to run the app in development mode.
 
 To run just the API - follow the below steps
