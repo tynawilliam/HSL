@@ -14,6 +14,10 @@ function App() {
   const setId = (e) => {
     setUserId(e.target.value)
   }
+
+  const closeModal = () => {
+    setIsValid(false)
+  }
   const onSubmit = (e) => {
     e.preventDefault()
 
@@ -32,8 +36,12 @@ function App() {
       }else {
         setIsValid(true);
       }
+
+      const inputBox = document.getElementById("getId")
+      inputBox.value = ""
     }
     validateUser()
+    
     
   }
   useEffect(() => {
@@ -75,6 +83,7 @@ function App() {
             <Modal
             className="modal" 
               isOpen={isValid}>
+                <button onClick={closeModal}>X</button>
                 <Questions setSubmitted={setSubmitted} setIsValid={setIsValid} questions={questions} userId={userId}></Questions>
       
             </Modal>
