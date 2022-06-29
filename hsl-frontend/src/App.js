@@ -17,28 +17,37 @@ function App() {
 
   const closeModal = () => {
     setIsValid(false)
+    setUserId("")
   }
   const onSubmit = (e) => {
     e.preventDefault()
 
     async function validateUser() {
-      const res = await fetch(`/api/users/${userId}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
+      if(userId){
+        console.log(userId);
+        const res = await fetch(`/api/users/${userId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+  
+        const resData = await res.json();
+        if(!res.ok) {
+          setIsValid(false)
+          console.log("Error")
+        }else {
+          setIsValid(true);
         }
-      });
-
-      const resData = await res.json();
-      if(!res.ok) {
-        setIsValid(false)
-        console.log("Error")
-      }else {
-        setIsValid(true);
+        const errorMsg = document.getElementById('loginError')
+        errorMsg.hidden = true
+  
+        const inputBox = document.getElementById("getId")
+        inputBox.value = ""
+      }else{
+        const errorMsg = document.getElementById('loginError')
+        errorMsg.hidden = false
       }
-
-      const inputBox = document.getElementById("getId")
-      inputBox.value = ""
     }
     validateUser()
     
@@ -57,7 +66,6 @@ function App() {
       }
     })()
   }, [])
-  if(!submitted){
     return (
         <div className="App mainContainer">
           <div id="sidebar">
@@ -73,6 +81,7 @@ function App() {
             </div>
           </div>
           <div id="main">
+            {!submitted ? 
             <div id="content">
             <h1>Welcome to the Harvard Skills Lab Survey</h1>
             <h4>To continue, please enter your user id in the field below</h4>
@@ -80,6 +89,7 @@ function App() {
               <input id="getId" onChange={setId}/>
               <input id="loginButton" type="submit" value="login"/>
             </form>
+            <p hidden id='loginError'>Please enter a valid user id</p>
             <Modal
             className="modal" 
               isOpen={isValid}>
@@ -88,17 +98,15 @@ function App() {
       
             </Modal>
             </div>
+            : <div id="thankYou">
+               <h1>Thank you for your participation</h1>
+              <h3>You can now safely close your browser</h3>
+              </div>
+            }
             </div>
           </div>
     );
-  } else{
-    return (
-      <div id="thank-you">
-        <h1>Thank you for your time</h1>
-        <p>Your responses have been recorded. You can now safely close your browser</p>
-      </div>
-    )
-  }
+  
 }
 
 export default App;

@@ -59,9 +59,11 @@ export default function Question({questions, setIsValid, setSubmitted, userId}) 
   return (
     <form className='form'>
       <p id='instructions'>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel nibh tempus, imperdiet libero eu, feugiat enim. Nam sit amet ipsum massa. Nulla sed quam ut ex pharetra euismod id eget leo. Vestibulum condimentum elit purus, vel molestie massa dapibus quis. Mauris mattis porta eros iaculis auctor. Cras sit amet ligula commodo, feugiat purus et, tempus lacus.
+     The following questions are related to the HSL experiment you recently took part in.
+     Please ensure you answer each question as accurately as possible, and submit once you are done.
+     Feel free to reach out to any member of our team if you have any questions or concerns.
       </p>
-      <input type="button" onClick={onBegin} value="Begin"/>
+      <input id='beginButton' type="button" onClick={onBegin} value="Begin"/>
     </form>
   )
 }
