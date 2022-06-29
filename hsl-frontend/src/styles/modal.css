@@ -1,9 +1,23 @@
 .modal{
+    position: relative;
     display: flex;
     justify-content: center;
     width: 60vw;
     height: 60vh;
-    background-color: aqua;
+    background-color: #dddddd;
     margin: auto;
     margin-top: 6vh;
+}
+
+.modal button{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /* background-color: red; */
+    border: none;
+    font-size: x-large;
+}
+
+.modal button:hover{
+    cursor: pointer;
 }
