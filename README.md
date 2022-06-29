@@ -50,3 +50,6 @@ To run just the API - follow the beklow steps
 - POST / - add a new answer (upon submission of survey)
 - GET / - returns a list of questions and answers as well as the user who gave the answer.
 - GET /:id - returns question at id and its associated data.
+
+
+## App Flow

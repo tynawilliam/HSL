@@ -31,7 +31,6 @@ function App() {
           }
         });
   
-        const resData = await res.json();
         if(!res.ok) {
           setIsValid(false)
           console.log("Error")
@@ -68,7 +67,7 @@ function App() {
     return (
         <div className="App mainContainer">
           <div id="sidebar">
-            <img src="/powLogo.webp" />
+            <img src="/powLogo.webp" alt="HSL logo" />
             <h3>Future of Work</h3>
             <p>We design online experiments to measure skills like teamwork, adaptability and decision-making</p>
             <button>Follow Us</button>
