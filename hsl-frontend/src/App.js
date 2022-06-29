@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import Questions from './components/Questions'
 import './App.css';
 import './styles/modal.css'
+import './styles/main.css'
 
 function App() {
   const [userId, setUserId] = useState("")
@@ -50,20 +51,36 @@ function App() {
   }, [])
   if(!submitted){
     return (
-        <div className="App">
-        <h1>Welcome to the Harvard Skills Lab Survey</h1>
-        <h4>To continue, please enter your user id in the field below</h4>
-        <form onSubmit={onSubmit}>
-          <input id="getId" onChange={setId}/>
-          <input type="submit" value="login"/>
-        </form>
-        <Modal
-        className="modal" 
-          isOpen={isValid}>
-            <Questions setSubmitted={setSubmitted} setIsValid={setIsValid} questions={questions} userId={userId}></Questions>
-  
-        </Modal>
-        </div>
+        <div className="App mainContainer">
+          <div id="sidebar">
+            <img src="/powLogo.webp" />
+            <h3>Future of Work</h3>
+            <p>We design online experiments to measure skills like teamwork, adaptability and decision-making</p>
+            <button>Follow Us</button>
+            <div className="links">
+              <a href="https://www.pw.hks.harvard.edu/">Home</a>
+              <a href="https://www.pw.hks.harvard.edu/about">About</a>
+              <a href="https://www.pw.hks.harvard.edu/team">Team</a>
+              <a href="https://www.pw.hks.harvard.edu/contact">Contact</a>
+            </div>
+          </div>
+          <div id="main">
+            <div id="content">
+            <h1>Welcome to the Harvard Skills Lab Survey</h1>
+            <h4>To continue, please enter your user id in the field below</h4>
+            <form onSubmit={onSubmit}>
+              <input id="getId" onChange={setId}/>
+              <input id="loginButton" type="submit" value="login"/>
+            </form>
+            <Modal
+            className="modal" 
+              isOpen={isValid}>
+                <Questions setSubmitted={setSubmitted} setIsValid={setIsValid} questions={questions} userId={userId}></Questions>
+      
+            </Modal>
+            </div>
+            </div>
+          </div>
     );
   } else{
     return (
